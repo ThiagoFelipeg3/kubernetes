@@ -3,6 +3,7 @@ Este projeto é para fins de estudo.
 
 ## Commands
 
+```
 kind create cluster --config=<caminho arquivo yaml> --name=<nome cluster>
 
 kubectl get nodes
@@ -14,6 +15,14 @@ kubectl run mytest --image=<imagem>
 kubectl config get-clusters
 kubectl apply -f k8s/pod.yaml
 kubectl port-forward pod/goserver 8000:80
+
+Historia do deployment
+kubectl rollout history deployment <name>
+
+Voltar para a versão anterior ou para uma versão especifica:
+kubectl rollout undo pod goserver
+kubectl rollout undo pod goserver --to-revision=<numero da revisão>
+```
 
 
 ## ReplicaSet
@@ -47,3 +56,5 @@ Então quando atualizamos alguma versão da imagem e aplicar esta diferença o D
 Com isso conseguimos ter **zero down time**
 
 [doc Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+
+
