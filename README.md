@@ -1,6 +1,9 @@
+# Kubernetes
+Este projeto é para fins de estudo.
+
 ## Commands
 
-kind create cluster --config=<camilho arquivo yaml> --name=<nome cluster>
+kind create cluster --config=<caminho arquivo yaml> --name=<nome cluster>
 
 kubectl get nodes
 kubectl get pod
@@ -11,3 +14,28 @@ kubectl run mytest --image=<imagem>
 kubectl config get-clusters
 kubectl apply -f k8s/pod.yaml
 kubectl port-forward pod/goserver 8000:80
+
+
+## ReplicaSet
+
+Este recurso tem como responsabilidade monitorar a saúde de um pod para que quando cair por algum motivo
+um erro por exemplo, o replicaset sobe uma nova instancia pod.
+
+```
+kubectl get replicaset
+```
+[doc ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
+
+### Problema com ReplicaSet
+
+Quando realizamos a troca da versão da imagem docker e aplicamos a mudança com o comando apply
+
+```
+kubectl apply -f <caminho do arquivo yaml>
+```
+
+os pods não são atualizados com a nova versão, o grande problema disso tudo é que se um pod cair
+o proprio Kubernetes sobe um novo pod com a versão atualizada, porém os pods antigo ficaram com
+a versão anterior.
+
+Para resolver isso é preciso derrubar todos os pods após realizar a alteração de uma imagem.
