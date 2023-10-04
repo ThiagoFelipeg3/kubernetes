@@ -38,4 +38,12 @@ os pods não são atualizados com a nova versão, o grande problema disso tudo �
 o proprio Kubernetes sobe um novo pod com a versão atualizada, porém os pods antigo ficaram com
 a versão anterior.
 
-Para resolver isso é preciso derrubar todos os pods após realizar a alteração de uma imagem.
+Para resolver isso é preciso derrubar todos os pods após realizar a alteração de uma imagem,
+porém realizar isso manualmente não é interessante por isso o Kubernetes tem uma solução, um workload
+chamado Deployment, ele atualiza todos os Pods quando e ReplicaSet.
+
+Então quando atualizamos alguma versão da imagem e aplicar esta diferença o Deployment vai atualizar todos os pods e criar um novo replicaSet atualizado.
+
+Com isso conseguimos ter **zero down time**
+
+[doc Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
