@@ -1,7 +1,10 @@
 ## Commands
 
+kind create cluster --config=<camilho arquivo yaml> --name=<nome cluster>
+
 kubectl get nodes
 kubectl get pod
+kubectl get replicaset
 kubectl describe pods <name>
 kubectl delete pod <name>
 kubectl run mytest --image=<imagem>
