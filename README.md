@@ -16,6 +16,7 @@ kubectl run mytest --image=<imagem>
 kubectl config get-clusters
 kubectl apply -f k8s/pod.yaml
 kubectl port-forward pod/goserver 8000:80
+kubectl port-forward svc/goserver-service 8000:80
 
 Historia do deployment
 kubectl rollout history deployment <name>
@@ -23,6 +24,9 @@ kubectl rollout history deployment <name>
 Voltar para a versão anterior ou para uma versão especifica:
 kubectl rollout undo pod goserver
 kubectl rollout undo pod goserver --to-revision=<numero da revisão>
+
+Acessar a API do Kubernetes
+kubectl proxy --port=8080
 ```
 
 
