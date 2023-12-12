@@ -16,10 +16,19 @@ spec:
     spec:
       containers:
         - name: "goserver"
-          image: thiagofelipeg3/hello-go:v3.1
+          image: thiagofelipeg3/hello-go:v3.2
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 1
+            successThreshold: 1
+
           envFrom:
             - configMapRef:
-                name: "goserver-env"
+                name: configmap-family
             - secretRef:
                 name: goserver-secret
 
