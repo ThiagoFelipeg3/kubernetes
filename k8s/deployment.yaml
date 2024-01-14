@@ -18,22 +18,30 @@ spec:
         - name: "goserver"
           image: thiagofelipeg3/hello-go:v3.3
 
+          resources:
+            requests:
+              cpu: "0.3"
+              memory: 20Mi
+            limits:
+              cpu: "0.3"
+              memory: 25Mi
+
           readinessProbe:
             httpGet:
               path: /healthz
-              port: 8000
+              port: 80
             periodSeconds: 3
             failureThreshold: 1
             initialDelaySeconds: 10
 
-          # livenessProbe:
-          #   httpGet:
-          #     path: /healthz
-          #     port: 8000
-          #   periodSeconds: 5
-          #   failureThreshold: 3
-          #   timeoutSeconds: 1
-          #   successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 1
+            successThreshold: 1
 
           envFrom:
             - configMapRef:
