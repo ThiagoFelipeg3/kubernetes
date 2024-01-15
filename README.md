@@ -10,6 +10,7 @@ kubectl get nodes
 kubectl get pod
 kubectl get replicaset
 kubectl get svc
+kubectl get hpa
 kubectl describe pods <name>
 kubectl delete pod <name>
 kubectl run mytest --image=<imagem>
