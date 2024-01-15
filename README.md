@@ -65,3 +65,8 @@ Com isso conseguimos ter **zero down time**
 [doc Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
 
+### Teste de stress com Fortio
+
+```bash
+kubectl run -it  fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://goserver-service/healthz"
+```
