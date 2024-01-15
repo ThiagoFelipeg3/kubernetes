@@ -17,6 +17,7 @@ kubectl config get-clusters
 kubectl apply -f k8s/pod.yaml
 kubectl port-forward pod/goserver 8000:80
 kubectl port-forward svc/goserver-service 8000:80
+kubectl top pod <nome> "para ver o uso de CPU e memoria"
 
 Historia do deployment
 kubectl rollout history deployment <name>
