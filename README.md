@@ -35,6 +35,7 @@ kubectl exec -it <Nome do Pod> -- bash
 
 Para escalar uma aplicação
 kubectl scale statefulset mysql --replicas=5
+kubectl scale deployment goserver --replicas=2
 ```
 
 
