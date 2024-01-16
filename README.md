@@ -29,6 +29,12 @@ kubectl rollout undo pod goserver --to-revision=<numero da revisão>
 
 Acessar a API do Kubernetes
 kubectl proxy --port=8080
+
+Acessar um Pod
+kubectl exec -it <Nome do Pod> -- bash
+
+Para escalar uma aplicação
+kubectl scale statefulset mysql --replicas=5
 ```
 
 
