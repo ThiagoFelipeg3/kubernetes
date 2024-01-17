@@ -77,3 +77,15 @@ Com isso conseguimos ter **zero down time**
 ```bash
 kubectl run -it  fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://goserver-service/healthz"
 ```
+
+### Statefulset
+
+A vantagem de utilizar o statefulset é a forma como é escalada os Pods, conseguimos aumentar e diminuir a quantidade de maneira controlável e não aleatório, como uma pilha, o ultimo Pod a ser criado é o primeiro a ser destruido.
+
+Isso pode ser utilizado em uma arquitetura Master e Works, o primeiro Pod pode ser utilizado como Master e os seguintes como Works, evitando destruir o Pod master.
+
+Utilizar volumes para cada replica pode ser uma vantagem em cenários que precisamos manter uma informação(statefull), quando um pod é destruido o mesmo volume vinculado ao pod vai ser reutilizado para o novo pod.
+
+OBS: ReplicaSet, StatefulSet mantém um conjunto estável de pods de réplica em execução.
+
+StatefulSet gerencia a implantação e o escalonamento de um conjunto de pods e fornece garantias sobre a ordem e a exclusividade desses pods, ao contrario do Deployment ele mantém uma identidade fixa em cada Pod.
